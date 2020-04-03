@@ -1,0 +1,13 @@
+{
+  "name": "tinyhouse-v1-server",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "dev": "node src/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
