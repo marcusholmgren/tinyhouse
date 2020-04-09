@@ -11,6 +11,25 @@ Install all dependencies with yarn or npm.
 yarn install
 ```
 
+### Configure your environment variables
+
+Create a environment variable, `.env` file in the `\server` folder:
+
+```env
+PORT=9000
+DB_USER=<username>
+DB_USER_PASSWORD=<password>
+DB_CLUSTER=<mongodb cluster>
+```
+
+After you have configured your variables you can seed with some mock data
+
+```cli
+yarn seed
+```
+
+### Run & build
+
 Start the server with yarn.
 ```cli
 yarn start
