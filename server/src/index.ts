@@ -14,7 +14,6 @@ const mount = async (app: Application) => {
         resolvers, 
         context: () => ({db}) 
     });
-    // const server = new ApolloServer({ schema });
     server.applyMiddleware({ app, path: "/api" });
 
     app.listen(port);
