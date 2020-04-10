@@ -22,7 +22,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Server use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
@@ -32,6 +32,30 @@ jobs:
     - run: npm run build --if-present
       working-directory: ${{ env.working-dir }}
     - run: npm test --if-present
+      working-directory: ${{ env.working-dir }}
+      env:
+        CI: true
+
+  client-build:
+
+    runs-on: ubuntu-latest
+    env:
+      working-dir: ./client
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Client use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies
+      run: yarn
+      working-directory: ${{ env.working-dir }}
+    - run: npm run build --if-present
       working-directory: ${{ env.working-dir }}
       env:
         CI: true
