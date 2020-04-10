@@ -1,12 +1,13 @@
 import React from 'react';
-import { render } from 'react-dom';
+import {render} from 'react-dom';
 import * as serviceWorker from './serviceWorker';
+import {Listings} from './sections'
 
 render(
-  <React.StrictMode>
-    <div>Hello World!</div>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Listings/>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
