@@ -5,7 +5,7 @@ import {Listings} from './sections'
 
 render(
     <React.StrictMode>
-        <Listings/>
+        <Listings title="TinyHouse Listings" />
     </React.StrictMode>,
     document.getElementById('root')
 );
