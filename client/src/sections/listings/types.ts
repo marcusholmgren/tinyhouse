@@ -8,8 +8,16 @@ interface Listing {
     numOfBeds: number;
     numOfBaths: number;
     rating: number;
-  }
+}
 
-  export interface ListingsData {
+export interface ListingsData {
     listings: Listing[];
-  }
+}
+
+export interface DeleteListingsData {
+    deleteListing: Listing[];
+}
+
+export interface DeleteListingsVariables {
+    id: string
+}
