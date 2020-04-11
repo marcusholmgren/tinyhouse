@@ -12,6 +12,6 @@ export const server = {
             },
             body: JSON.stringify(body)
         });
-        return res.json() as Promise<{ data: TData}>
+        return await res.json() as Promise<{ data: TData}>
     }
 };

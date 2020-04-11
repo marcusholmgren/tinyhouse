@@ -1,4 +1,4 @@
-interface Listing {
+export interface Listing {
     id: string;
     title: string;
     image: string;
@@ -15,7 +15,7 @@ export interface ListingsData {
 }
 
 export interface DeleteListingsData {
-    deleteListing: Listing[];
+    deleteListing: Listing;
 }
 
 export interface DeleteListingsVariables {
