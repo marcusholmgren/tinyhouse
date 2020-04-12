@@ -1,5 +1,5 @@
 import React from 'react'
-import {server, useQuery} from '../../lib/api'
+import { useQuery, useMutation } from '../../lib/api'
 import { DeleteListingsData, DeleteListingsVariables, ListingsData } from './types'
 
 const LISTINGS = `query Listings {
@@ -34,23 +34,25 @@ const DELETE_LISTING = `mutation DeleteListing($id: ID!) {
 interface Props {
     title: string
 }
+
+
 export const Listings = ({ title }: Props) => {
     const {data, loading, error, refresh} = useQuery<ListingsData>(LISTINGS);
+    const [deleteListing, {loading: deleteLoading, error: deleteError}] = useMutation<DeleteListingsData, DeleteListingsVariables>(DELETE_LISTING);
+
+
     const listings = data?.listings ?? null;
 
-    const deleteListing = async (id: string) => {
-        await server.fetch<DeleteListingsData, DeleteListingsVariables>({
-            query: DELETE_LISTING,
-            variables: {id}
-        });
 
+    const handleDeleteListing = async (id: string) => {
+        await deleteListing({id});
         refresh();
     }
 
     const listingsList = listings?.map(listing =>
         <li key={listing.id}>
             {listing.title}
-            <button onClick={() => deleteListing(listing.id)}>Delete</button>
+            <button onClick={() => handleDeleteListing(listing.id)}>Delete</button>
         </li>
     ) ?? null;
 
@@ -61,10 +63,15 @@ export const Listings = ({ title }: Props) => {
         return <h2>Oh no! Something went wrong - please try again later <span role="img" aria-label="Sad face emoji">😞</span></h2>
     }
 
+    const deleteListingLoadingMessage = deleteListing ? <h4>Deletion in progress...</h4> : null;
+    const deleteListingError = deleteError ? <h4>Oh no! Something went wrong - could not delete item <span role="img" aria-label="Sad face emoji">😞</span></h4> : null
     return <div>
         <h2>{title}</h2>
+        {deleteListingLoadingMessage}
         <ul>
             {listingsList}
         </ul>
+        {deleteListingError
+        }
     </div>
 }
