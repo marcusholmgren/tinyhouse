@@ -63,7 +63,7 @@ export const Listings = ({ title }: Props) => {
         return <h2>Oh no! Something went wrong - please try again later <span role="img" aria-label="Sad face emoji">😞</span></h2>
     }
 
-    const deleteListingLoadingMessage = deleteListing ? <h4>Deletion in progress...</h4> : null;
+    const deleteListingLoadingMessage = deleteLoading ? <h4>Deletion in progress...</h4> : null;
     const deleteListingError = deleteError ? <h4>Oh no! Something went wrong - could not delete item <span role="img" aria-label="Sad face emoji">😞</span></h4> : null
     return <div>
         <h2>{title}</h2>
