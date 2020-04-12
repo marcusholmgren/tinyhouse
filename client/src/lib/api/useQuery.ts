@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, useCallback} from "react";
 import {server} from "./server";
 
 interface State<TData> {
@@ -8,15 +8,19 @@ interface State<TData> {
 export const useQuery = <TData = any>(query: string) => {
     const [state, setState] = useState<State<TData>>({data: null});
 
-    useEffect(() => {
+    const fetch = useCallback(() => {
         const fetchApi = async () => {
-            const {data} = await server.fetch<TData>({query});
-            setState({data});
-        }
-
-        fetchApi()
-            .catch(reason => console.error(`[useQuery] -- fetch failed: ${reason}`));
+        const {data} = await server.fetch<TData>({query});
+        setState({data});
+    }
+    fetchApi()
+        .catch(reason => console.error(`[useQuery] -- fetch failed: ${reason}`));
     }, [query])
 
-    return state;
+    useEffect(() => {
+        fetch()
+
+    }, [fetch])
+
+    return { ...state, refresh: fetch };
 }

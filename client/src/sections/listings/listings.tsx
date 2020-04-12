@@ -35,14 +35,16 @@ interface Props {
     title: string
 }
 export const Listings = ({ title }: Props) => {
-    const {data} = useQuery<ListingsData>(LISTINGS);
+    const {data, refresh} = useQuery<ListingsData>(LISTINGS);
     const listings = data?.listings ?? null;
 
     const deleteListing = async (id: string) => {
-        const data = await server.fetch<DeleteListingsData, DeleteListingsVariables>({
+        await server.fetch<DeleteListingsData, DeleteListingsVariables>({
             query: DELETE_LISTING,
             variables: {id}
         });
+
+        refresh();
     }
 
     const listingsList = listings?.map(listing =>
