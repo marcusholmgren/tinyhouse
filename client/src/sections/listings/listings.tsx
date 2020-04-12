@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import {server} from '../../lib/api'
+import React from 'react'
+import {server, useQuery} from '../../lib/api'
 import { DeleteListingsData, DeleteListingsVariables, ListingsData, Listing } from './types'
 
 const LISTINGS = `query Listings {
@@ -35,26 +35,14 @@ interface Props {
     title: string
 }
 export const Listings = ({ title }: Props) => {
-    const [ listings, setListings ] = useState<Listing[] | null>(null);
-    useEffect(( ) => {
-        fetchListing()
-            .catch(reason => console.error(`fetch listing failed: ${reason}`));
-    }, [])
-
-    const fetchListing = async () => {
-        const {data}= await server.fetch<ListingsData>({ query: LISTINGS })
-        console.log(data)
-        setListings(data.listings);
-    };
+    const {data} = useQuery<ListingsData>(LISTINGS);
+    const listings = data?.listings ?? null;
 
     const deleteListing = async (id: string) => {
-        const {data} = await server.fetch<DeleteListingsData, DeleteListingsVariables>({
+        const data = await server.fetch<DeleteListingsData, DeleteListingsVariables>({
             query: DELETE_LISTING,
             variables: {id}
         });
-        if (listings) {
-            setListings([...listings.filter(x => x.id !== data.deleteListing.id)])
-        }
     }
 
     const listingsList = listings?.map(listing =>
@@ -62,11 +50,10 @@ export const Listings = ({ title }: Props) => {
             {listing.title}
             <button onClick={() => deleteListing(listing.id)}>Delete</button>
         </li>
-    )
+    ) ?? null;
 
     return <div>
         <h2>{title}</h2>
-        <button onClick={fetchListing}>Query Listings!</button>
         <ul>
             {listingsList}
         </ul>
