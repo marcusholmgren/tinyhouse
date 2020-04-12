@@ -58,7 +58,7 @@ export const Listings = ({ title }: Props) => {
         return <h2>loading...</h2>
     }
     if (error) {
-        return <h2>Oh no! Something went wrong - please try again later 😞</h2>
+        return <h2>Oh no! Something went wrong - please try again later <span role="img" aria-label="Sad face emoji">😞</span></h2>
     }
 
     return <div>
