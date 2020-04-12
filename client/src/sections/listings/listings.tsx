@@ -1,6 +1,6 @@
 import React from 'react'
 import {server, useQuery} from '../../lib/api'
-import { DeleteListingsData, DeleteListingsVariables, ListingsData, Listing } from './types'
+import { DeleteListingsData, DeleteListingsVariables, ListingsData } from './types'
 
 const LISTINGS = `query Listings {
   listings {
@@ -35,7 +35,7 @@ interface Props {
     title: string
 }
 export const Listings = ({ title }: Props) => {
-    const {data, refresh} = useQuery<ListingsData>(LISTINGS);
+    const {data, loading, error, refresh} = useQuery<ListingsData>(LISTINGS);
     const listings = data?.listings ?? null;
 
     const deleteListing = async (id: string) => {
@@ -53,6 +53,13 @@ export const Listings = ({ title }: Props) => {
             <button onClick={() => deleteListing(listing.id)}>Delete</button>
         </li>
     ) ?? null;
+
+    if (loading) {
+        return <h2>loading...</h2>
+    }
+    if (error) {
+        return <h2>Oh no! Something went wrong - please try again later 😞</h2>
+    }
 
     return <div>
         <h2>{title}</h2>
