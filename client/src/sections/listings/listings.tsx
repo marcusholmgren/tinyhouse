@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {server} from '../../lib/api'
 import { DeleteListingsData, DeleteListingsVariables, ListingsData, Listing } from './types'
 
@@ -36,6 +36,10 @@ interface Props {
 }
 export const Listings = ({ title }: Props) => {
     const [ listings, setListings ] = useState<Listing[] | null>(null);
+    useEffect(( ) => {
+        fetchListing()
+            .catch(reason => console.error(`fetch listing failed: ${reason}`));
+    }, [])
 
     const fetchListing = async () => {
         const {data}= await server.fetch<ListingsData>({ query: LISTINGS })
