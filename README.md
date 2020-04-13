@@ -6,14 +6,21 @@ Fullstack React home sharing application, https://www.newline.co/tinyhouse
 
 ## Getting started
 
-Install all dependencies with yarn or npm.
+Install all dependencies with yarn or npm. This is the same for both client and server project.
 ```cli
 yarn install
 ```
 
-### Configure your environment variables
+### Server
 
-Create a environment variable, `.env` file in the `\server` folder:
+A [Apollo Server](https://www.apollographql.com/docs/apollo-server) with [MongoDB](https://www.mongodb.com) backend 
+for storing rental houses. 
+
+All server code is located in the  `/server` folder.
+
+#### Configure your environment variables
+
+Create a environment variable, `.env` file in the `/server` folder:
 
 ```env
 PORT=9000
@@ -28,7 +35,7 @@ After you have configured your variables you can seed with some mock data
 yarn seed
 ```
 
-### Run & build
+#### Run & build
 
 Start the server with yarn.
 ```cli
@@ -40,3 +47,25 @@ Create a production build with yarn.
 yarn build
 ```
 
+### Client
+
+A React [Apollo Client](https://www.apollographql.com/docs/react) that display rental listings.
+
+All client code is located in the  `/client` folder.
+
+Start the client with yarn.
+```cli
+yarn start
+```
+
+The client uses [Apollo CLI](https://www.apollographql.com/docs/devtools/cli/) to generate types from the server API.
+
+Read the server API schema and stores it locally to the client.
+```cli
+yarn codegen:schema
+```
+
+Reads the local schema file and generate types where GraphQL queries are defined.
+```cli
+yarn codegen:generate
+```
