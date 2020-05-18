@@ -12,11 +12,11 @@ const client = new ApolloClient({
 });
 
 render(
-    <React.StrictMode>
+    <>
         <ApolloProvider client={client}>
-            <Listings title="TinyHouse Listings" />
+            <Listings title="TinyHouse Listings"/>
         </ApolloProvider>
-    </React.StrictMode>,
+    </>,
     document.getElementById('root')
 );
 
