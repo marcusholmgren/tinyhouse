@@ -16,11 +16,11 @@ export const ListingsSkeleton = ({title, error = false}: Prop) => {
     return <div className="listings-skeleton">
         {errorAlert}
         <h2>{title}
-            {[...Array(3)].map(_ => (
-                <>
+            {[...Array(3)].map((_, index) => (
+                <div key={index}>
                     <Skeleton active paragraph={{rows: 1}}/>
                     <Divider/>
-                </>
+                </div>
             ))}
         </h2>
     </div>

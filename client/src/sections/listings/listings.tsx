@@ -65,6 +65,7 @@ export const Listings = ({title}: Props) => {
                 <Button type="primary" onClick={() => handleDeleteListing(listing.id)}>Delete</Button>
             ]}>
                 <List.Item.Meta
+                    key={listing.id}
                     title={listing.title}
                     description={listing.address}
                     avatar={<Avatar src={listing.image} shape="square" size={48}/>}
