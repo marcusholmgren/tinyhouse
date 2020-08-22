@@ -1,1 +1,6 @@
-export { Listings } from './listings'
+export {Home} from './Home'
+export {Host} from './Host'
+export {Listing} from './Listing'
+export {Listings} from './listings'
+export {NotFound} from './NotFound'
+export {User} from './User'

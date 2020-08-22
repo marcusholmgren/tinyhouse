@@ -1,8 +1,9 @@
 import React from 'react';
 import {render} from 'react-dom';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
 import * as serviceWorker from './serviceWorker';
-import {Listings} from './sections';
+import {Home, Host, Listing, Listings, NotFound, User} from './sections';
 import './styles/index.css';
 
 
@@ -11,10 +12,27 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
+const App = () => {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home/>} />
+                <Route path="/host" element={<Host/>} />
+                <Route path="/listing/:id" element={<Listing/>} />
+                <Route path="/listings" element={<Listings title="TinyHouse Listings" />}>
+                    <Route path="/:location" element={<Listings title="TinyHouse Listings" />} />
+                </Route>
+                <Route path="/user/:id" element={<User />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </BrowserRouter>
+    )
+}
+
 render(
     <>
         <ApolloProvider client={client}>
-            <Listings title="TinyHouse Listings"/>
+            <App/>
         </ApolloProvider>
     </>,
     document.getElementById('root')
