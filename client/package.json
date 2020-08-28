@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
     "@apollo/client": "^3.1.4",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^10.4.9",

@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {render} from 'react-dom';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
-import {Layout} from 'antd';
+import {Affix, Layout} from 'antd';
 import * as serviceWorker from './serviceWorker';
-import {Home, Host, Listing, Listings, Login, NotFound, User} from './sections';
+import {AppHeader, Home, Host, Listing, Listings, Login, NotFound, User} from './sections';
 import {Viewer} from "./lib/types";
 import './styles/index.css';
 
@@ -24,10 +24,13 @@ const initialViewer: Viewer = {
 
 const App = () => {
     const [viewer, setViewer] = useState<Viewer>(initialViewer);
-    console.log(viewer)
+
     return (
         <BrowserRouter>
             <Layout id="app">
+                <Affix offsetTop={0} className="app__affix-header">
+                    <AppHeader viewer={viewer} setViewer={setViewer}/>
+                </Affix>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/host" element={<Host/>}/>
