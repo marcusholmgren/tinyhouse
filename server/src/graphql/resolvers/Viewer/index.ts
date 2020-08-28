@@ -81,9 +81,9 @@ export const viewResolvers: IResolvers = {
         }
     },
     Mutation: {
-        logIn: async (_root: undefined, {input}: LogInArgs, {db}: { db: Database }): Promise<Viewer> => {
+        logIn: async (_root: undefined, {login}: LogInArgs, {db}: { db: Database }): Promise<Viewer> => {
             try {
-                const code = input ? input.code : null;
+                const code = login ? login.code : null;
                 const token = crypto.randomBytes(16).toString('hex');
 
                 const viewer: User | undefined = code ? await logInViaGoogle(code, token, db) : undefined;
