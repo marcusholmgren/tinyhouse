@@ -27,6 +27,11 @@ PORT=9000
 DB_USER=<username>
 DB_USER_PASSWORD=<password>
 DB_CLUSTER=<mongodb cluster>
+G_CLIENT_ID=<Google OAuth client id>
+G_CLIENT_SECRET=<Google OAuth API secret>
+PUBLIC_URL=<http://localhost:3000>
+SECRET=<some secret text>
+NODE_ENV=<development for local dev>
 ```
 
 After you have configured your variables you can seed with some mock data
