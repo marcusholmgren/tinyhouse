@@ -1,7 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {render} from 'react-dom';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {ApolloClient, ApolloProvider, InMemoryCache, useMutation} from '@apollo/client';
+import {ApolloClient, ApolloProvider, createHttpLink, InMemoryCache, useMutation} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import {Affix, Layout, Spin} from 'antd';
 import * as serviceWorker from './serviceWorker';
 import {AppHeader, Home, Host, Listing, Listings, Login, NotFound, User} from './sections';
@@ -12,10 +13,24 @@ import './styles/index.css';
 import {AppHeaderSkeleton} from "./lib/components/AppHeaderSkeleton";
 import {ErrorBanner} from "./lib/components/ErrorBanner";
 
+const httpLink = createHttpLink({
+     uri: "/api",
+});
+
+const authLink = setContext((_, {headers}) => {
+    const token = sessionStorage.getItem("token")
+    return {
+        headers: {
+            ...headers,
+            "X-CSRF-TOKEN":  token || ""
+        }
+    }
+})
 
 const client = new ApolloClient({
-    uri: "/api",
+    link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
+
 });
 
 const initialViewer: Viewer = {
@@ -32,6 +47,11 @@ const App = () => {
         onCompleted: data => {
             if (data && data.logIn) {
                 setViewer(data.logIn)
+                if (data.logIn.token) {
+                    sessionStorage.setItem("token", data.logIn.token)
+                }
+            } else {
+                sessionStorage.removeItem("token")
             }
         }
     })

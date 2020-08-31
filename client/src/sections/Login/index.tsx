@@ -23,8 +23,9 @@ export function Login({setViewer}: LoginProps) {
     const [logIn, { loading: logInLoading, error: loginError }
     ] = useMutation<LogInData, LogInVariables>(LOG_IN, {
         onCompleted: data => {
-            if (data && data.logIn) {
+            if (data && data.logIn && data.logIn.token) {
                 setViewer(data.logIn)
+                sessionStorage.setItem("token", data.logIn.token)
                 displaySuccessNotification("You've successfully logged in!")
                 const {id: viewerId} = data.logIn
                 navigate(`/user/${viewerId}`)
