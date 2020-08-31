@@ -99,54 +99,64 @@ async function logInViaCookie(token: string, db: Database, req: Request, res: Re
 
 export const viewResolvers: IResolvers = {
     Query: {
-        authUrl: (): string => {
-            try {
-                return Google.authUrl;
-            } catch (error) {
-                throw new Error(`Failed to query Google Auth Url: ${error}`)
-            }
-        }
+        authUrl: authUrlQuery
     },
     Mutation: {
-        logIn: async (_root: undefined, {login}: LogInArgs, {db, req, res}: { db: Database, req: Request, res: Response }): Promise<Viewer> => {
-            try {
-                const code = login ? login.code : null;
-                const token = crypto.randomBytes(16).toString('hex');
-
-                const viewer: User | undefined = code ?
-                    await logInViaGoogle(code, token, db, res) :
-                    await logInViaCookie(token, db, req, res);
-
-                if (!viewer) {
-                    return {didRequest: true}
-                }
-
-                return {
-                    _id: viewer._id,
-                    token: viewer.token,
-                    avatar: viewer.avatar,
-                    walletId: viewer.walletId,
-                    didRequest: true
-                }
-            } catch (error) {
-                throw new Error(`Failed to log in: ${error}`)
-            }
-        },
-        logOut: (_root: undefined, _args: unknown, {res}: { res: Response}): Viewer => {
-            try {
-                res.clearCookie("viewer", cookieOptions)
-                return { didRequest: true}
-            } catch (error) {
-                throw new Error(`Failed to log out: ${error}`)
-            }
-        }
+        logIn: logInMutation,
+        logOut: logOutMutation
     },
     Viewer: {
-        id: (viewer: Viewer): string | undefined => {
-            return viewer._id
-        },
-        hasWallet: (viewer: Viewer): boolean | undefined => {
-            return viewer.walletId ? true : undefined
+        id: getViewerId,
+        hasWallet: viewerHasWallet
+    }
+}
+
+function viewerHasWallet(viewer: Viewer): boolean | undefined {
+    return viewer.walletId ? true : undefined
+}
+
+function getViewerId(viewer: Viewer): string | undefined {
+    return viewer._id
+}
+
+function logOutMutation(_root: undefined, _args: unknown, {res}: { res: Response }): Viewer {
+    try {
+        res.clearCookie("viewer", cookieOptions)
+        return {didRequest: true}
+    } catch (error) {
+        throw new Error(`Failed to log out: ${error}`)
+    }
+}
+
+async function logInMutation(_root: undefined, {login}: LogInArgs, {db, req, res}: { db: Database, req: Request, res: Response }): Promise<Viewer> {
+    try {
+        const code = login ? login.code : null;
+        const token = crypto.randomBytes(16).toString('hex');
+
+        const viewer: User | undefined = code ?
+            await logInViaGoogle(code, token, db, res) :
+            await logInViaCookie(token, db, req, res);
+
+        if (!viewer) {
+            return {didRequest: true}
         }
+
+        return {
+            _id: viewer._id,
+            token: viewer.token,
+            avatar: viewer.avatar,
+            walletId: viewer.walletId,
+            didRequest: true
+        }
+    } catch (error) {
+        throw new Error(`Failed to log in: ${error}`)
+    }
+}
+
+function authUrlQuery(): string {
+    try {
+        return Google.authUrl;
+    } catch (error) {
+        throw new Error(`Failed to query Google Auth Url: ${error}`)
     }
 }
