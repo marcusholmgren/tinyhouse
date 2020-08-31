@@ -1,14 +1,15 @@
-import React from 'react'
-import {Alert} from 'antd'
+import React from "react";
+import { Alert } from "antd";
 
 interface ErrorBannerProps {
-    message?: string,
-    description?: string
+    message?: string;
+    description?: string;
 }
 
 export function ErrorBanner({
-                                message = "Oh no! Something went wrong :(",
-                                description = "Sorry, but something went wrong. Please check you connection and try again."}: ErrorBannerProps) {
+    message = "Oh no! Something went wrong :(",
+    description = "Sorry, but something went wrong. Please check you connection and try again.",
+}: ErrorBannerProps) {
     return (
         <Alert
             banner
@@ -18,5 +19,5 @@ export function ErrorBanner({
             type="error"
             className="error-banner"
         />
-    )
+    );
 }

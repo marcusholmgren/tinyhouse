@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("dotenv").config();
 
-import {connectDatabase} from "../src/database";
+import { connectDatabase } from "../src/database";
 
 const clear = async () => {
     try {

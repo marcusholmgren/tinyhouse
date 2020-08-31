@@ -1,11 +1,11 @@
-import {ObjectId, Collection} from 'mongodb';
+import { ObjectId, Collection } from "mongodb";
 
 export interface Viewer {
     _id?: string;
     token?: string;
     avatar?: string;
     walletId?: string;
-    didRequest: boolean
+    didRequest: boolean;
 }
 
 export enum ListingType {
@@ -60,7 +60,7 @@ export interface User {
     income: number;
     bookings: ObjectId[];
     listings: ObjectId[];
-    authorized?: boolean
+    authorized?: boolean;
 }
 
 export interface Database {

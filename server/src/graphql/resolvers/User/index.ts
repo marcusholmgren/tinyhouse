@@ -1,50 +1,64 @@
-import {IResolvers} from 'apollo-server-express';
-import {Request} from 'express';
-import {Booking, Database, User} from "../../../lib/types";
-import {authorize} from "../../../lib/utils";
-import {UserArgs, UserBookingsArgs, UserBookingsData, UserListingsArgs, UserListingsData} from "./types";
+import { IResolvers } from "apollo-server-express";
+import { Request } from "express";
+import { Booking, Database, User } from "../../../lib/types";
+import { authorize } from "../../../lib/utils";
+import {
+    UserArgs,
+    UserBookingsArgs,
+    UserBookingsData,
+    UserListingsArgs,
+    UserListingsData,
+} from "./types";
 
-export const userResolvers : IResolvers = {
+export const userResolvers: IResolvers = {
     Query: {
-        user: userQuery
+        user: userQuery,
     },
     User: {
         id: getUserId,
         hasWallet: userHasWallet,
         income: getUserIncome,
         bookings: getUserBookings,
-        listings: getUserListings
-    }
-}
+        listings: getUserListings,
+    },
+};
 
-async function getUserListings(user: User, {limit, page}: UserListingsArgs, {db}: { db: Database }): Promise<UserListingsData> {
+async function getUserListings(
+    user: User,
+    { limit, page }: UserListingsArgs,
+    { db }: { db: Database }
+): Promise<UserListingsData> {
     try {
         const data: UserListingsData = {
             total: 0,
-            result: []
-        }
+            result: [],
+        };
 
         if (!user.authorized) {
-            return data
+            return data;
         }
 
         let cursor = await db.listings.find({
-            _id: { $in: user.listings }
-        })
+            _id: { $in: user.listings },
+        });
 
-        cursor = cursor.skip(page > 0 ? (page - 1)*limit : 0)
-        cursor = cursor.limit(limit)
+        cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);
+        cursor = cursor.limit(limit);
 
-        data.total = await cursor.count()
-        data.result = await cursor.toArray()
+        data.total = await cursor.count();
+        data.result = await cursor.toArray();
 
-        return data
+        return data;
     } catch (error) {
-        throw new Error(`Failed to query user listings: ${error}`)
+        throw new Error(`Failed to query user listings: ${error}`);
     }
 }
 
-async function getUserBookings(user: User, {limit, page}: UserBookingsArgs, {db}: { db: Database }): Promise<UserBookingsData | null> {
+async function getUserBookings(
+    user: User,
+    { limit, page }: UserBookingsArgs,
+    { db }: { db: Database }
+): Promise<UserBookingsData | null> {
     try {
         if (!user.authorized) {
             return null;
@@ -52,45 +66,49 @@ async function getUserBookings(user: User, {limit, page}: UserBookingsArgs, {db}
 
         const data: UserBookingsData = {
             total: 0,
-            result: []
-        }
+            result: [],
+        };
 
         let cursor = await db.bookings.find({
-            _id: { $in: user.bookings }
-        })
+            _id: { $in: user.bookings },
+        });
 
-        cursor = cursor.skip(page > 0 ? (page-1)*limit : 0)
-        cursor = cursor.limit(limit)
+        cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);
+        cursor = cursor.limit(limit);
 
-        data.total = await cursor.count()
-        data.result = await cursor.toArray()
+        data.total = await cursor.count();
+        data.result = await cursor.toArray();
 
-        return data
+        return data;
     } catch (error) {
-        throw new Error(`Failed to query user bookings: ${error}`)
+        throw new Error(`Failed to query user bookings: ${error}`);
     }
 }
 
 function getUserIncome(user: User): number | null {
-    return user.authorized ? user.income : null
+    return user.authorized ? user.income : null;
 }
 
 function userHasWallet(user: User): boolean {
-    return Boolean(user.walletId)
+    return Boolean(user.walletId);
 }
 
 function getUserId(user: User): string {
-    return user._id
+    return user._id;
 }
 
-async function userQuery(_root: undefined, {id}: UserArgs, {db, req}: { db: Database, req: Request }): Promise<User> {
+async function userQuery(
+    _root: undefined,
+    { id }: UserArgs,
+    { db, req }: { db: Database; req: Request }
+): Promise<User> {
     try {
         const user = await db.users.findOne({
-            _id: id
-        })
+            _id: id,
+        });
 
         if (!user) {
-            throw new Error("User can't be found")
+            throw new Error("User can't be found");
         }
 
         const viewer = await authorize(db, req);
@@ -99,7 +117,7 @@ async function userQuery(_root: undefined, {id}: UserArgs, {db, req}: { db: Data
         }
 
         return user;
-    } catch(error) {
-        throw new Error(`Failed to query user: ${error}`)
+    } catch (error) {
+        throw new Error(`Failed to query user: ${error}`);
     }
 }

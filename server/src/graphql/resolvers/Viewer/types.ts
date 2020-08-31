@@ -1,3 +1,3 @@
 export interface LogInArgs {
-    login: { code: string} | null
+    login: { code: string } | null;
 }

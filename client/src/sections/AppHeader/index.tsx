@@ -1,24 +1,24 @@
-import React from 'react'
-import {Layout} from 'antd'
-import {NavLink} from 'react-router-dom'
-import logo from './assets/tinyhouse-logo.png'
-import {MenuItems} from "./components/MenuItems";
-import {Viewer} from "../../lib/types";
+import React from "react";
+import { Layout } from "antd";
+import { NavLink } from "react-router-dom";
+import logo from "./assets/tinyhouse-logo.png";
+import { MenuItems } from "./components/MenuItems";
+import { Viewer } from "../../lib/types";
 
 interface AppHeaderProps {
-    viewer: Viewer
-    setViewer: (viewer: Viewer) => void
+    viewer: Viewer;
+    setViewer: (viewer: Viewer) => void;
 }
 
-const {Header} = Layout;
+const { Header } = Layout;
 
-export function AppHeader({viewer, setViewer}: AppHeaderProps) {
+export function AppHeader({ viewer, setViewer }: AppHeaderProps) {
     return (
         <Header className="app-header">
             <div className="app-header__logo-search-section">
                 <div className="app-header__logo">
                     <NavLink to="/">
-                        <img src={logo} alt="TinyHouse logo"/>
+                        <img src={logo} alt="TinyHouse logo" />
                     </NavLink>
                 </div>
             </div>
@@ -26,5 +26,5 @@ export function AppHeader({viewer, setViewer}: AppHeaderProps) {
                 <MenuItems viewer={viewer} setViewer={setViewer} />
             </div>
         </Header>
-    )
+    );
 }

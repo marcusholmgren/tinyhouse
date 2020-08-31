@@ -1,7 +1,7 @@
 .listings-skeleton
-.ant-skeleton-content
-.ant-skeleton-title
-+ .ant-skeleton-paragraph {
+    .ant-skeleton-content
+    .ant-skeleton-title
+    + .ant-skeleton-paragraph {
     margin-top: 12px;
 }
 
