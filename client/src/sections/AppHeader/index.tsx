@@ -1,7 +1,7 @@
 import React from 'react'
 import {Layout} from 'antd'
 import {NavLink} from 'react-router-dom'
-import logo from './assests/tinyhouse-logo.png'
+import logo from './assets/tinyhouse-logo.png'
 import {MenuItems} from "./components/MenuItems";
 import {Viewer} from "../../lib/types";
 
