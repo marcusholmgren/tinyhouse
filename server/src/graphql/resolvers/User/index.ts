@@ -1,6 +1,6 @@
 import { IResolvers } from "apollo-server-express";
 import { Request } from "express";
-import { Booking, Database, User } from "../../../lib/types";
+import { Database, User } from "../../../lib/types";
 import { authorize } from "../../../lib/utils";
 import {
     UserArgs,
@@ -38,7 +38,7 @@ async function getUserListings(
             return data;
         }
 
-        let cursor = await db.listings.find({
+        let cursor = db.listings.find({
             _id: { $in: user.listings },
         });
 
@@ -69,7 +69,7 @@ async function getUserBookings(
             result: [],
         };
 
-        let cursor = await db.bookings.find({
+        let cursor = db.bookings.find({
             _id: { $in: user.bookings },
         });
 
@@ -112,7 +112,7 @@ async function userQuery(
         }
 
         const viewer = await authorize(db, req);
-        if (viewer && viewer._id == user._id) {
+        if (viewer && viewer._id === user._id) {
             user.authorized = true;
         }
 

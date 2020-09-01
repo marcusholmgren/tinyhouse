@@ -2,12 +2,12 @@ import React from "react";
 import { Alert, Skeleton, Divider } from "antd";
 import "./styles/listings-skeleton.css";
 
-interface Prop {
+interface ListingsSkeletonProp {
     title: string;
     error?: boolean;
 }
 
-export const ListingsSkeleton = ({ title, error = false }: Prop) => {
+export function ListingsSkeleton({title, error = false}: ListingsSkeletonProp) {
     const errorAlert = error ? (
         <Alert
             type="error"
@@ -29,11 +29,11 @@ export const ListingsSkeleton = ({ title, error = false }: Prop) => {
                 {title}
                 {[...Array(3)].map((_, index) => (
                     <div key={index}>
-                        <Skeleton active paragraph={{ rows: 1 }} />
-                        <Divider />
+                        <Skeleton active paragraph={{rows: 1}}/>
+                        <Divider/>
                     </div>
                 ))}
             </h2>
         </div>
     );
-};
+}

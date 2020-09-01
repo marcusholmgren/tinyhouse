@@ -13,18 +13,20 @@ export const Google = {
             "https://www.googleapis.com/auth/userinfo.profile",
         ],
     }),
-    logIn: async (code: string) => {
-        const { tokens } = await auth.getToken(code);
-
-        auth.setCredentials(tokens);
-
-        const { data } = await google
-            .people({ version: "v1", auth })
-            .people.get({
-                resourceName: "people/me",
-                personFields: "emailAddresses,names,photos",
-            });
-
-        return { user: data };
-    },
+    logIn: logInHandler,
 };
+
+async function logInHandler(code: string) {
+    const {tokens} = await auth.getToken(code);
+
+    auth.setCredentials(tokens);
+
+    const {data} = await google
+        .people({version: "v1", auth})
+        .people.get({
+            resourceName: "people/me",
+            personFields: "emailAddresses,names,photos",
+        });
+
+    return {user: data};
+}

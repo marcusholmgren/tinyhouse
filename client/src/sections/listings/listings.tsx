@@ -56,7 +56,7 @@ export const Listings = ({ title }: Props) => {
 
     const handleDeleteListing = async (id: string) => {
         await deleteListing({ variables: { id } });
-        refetch();
+        await refetch();
     };
 
     const listingsList = listings ? (
