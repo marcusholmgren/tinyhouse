@@ -34,7 +34,7 @@ async function getUserListings(
             result: [],
         };
 
-        if (!user.authorized) {
+        if (!user) {
             return data;
         }
 
