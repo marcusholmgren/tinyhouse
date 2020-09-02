@@ -101,7 +101,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/host" element={<Host/>}/>
-                    <Route path="/listing/:id" element={<Listing/>}/>
+                    <Route path="/listing/:listingId" element={<Listing/>}/>
                     <Route
                         path="/listings"
                         element={<Listings title="TinyHouse Listings"/>}
