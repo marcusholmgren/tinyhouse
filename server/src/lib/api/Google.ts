@@ -17,16 +17,14 @@ export const Google = {
 };
 
 async function logInHandler(code: string) {
-    const {tokens} = await auth.getToken(code);
+    const { tokens } = await auth.getToken(code);
 
     auth.setCredentials(tokens);
 
-    const {data} = await google
-        .people({version: "v1", auth})
-        .people.get({
-            resourceName: "people/me",
-            personFields: "emailAddresses,names,photos",
-        });
+    const { data } = await google.people({ version: "v1", auth }).people.get({
+        resourceName: "people/me",
+        personFields: "emailAddresses,names,photos",
+    });
 
-    return {user: data};
+    return { user: data };
 }
