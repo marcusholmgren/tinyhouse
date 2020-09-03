@@ -7,7 +7,10 @@ interface ListingsSkeletonProp {
     error?: boolean;
 }
 
-export function ListingsSkeleton({title, error = false}: ListingsSkeletonProp) {
+export function ListingsSkeleton({
+    title,
+    error = false,
+}: ListingsSkeletonProp) {
     const errorAlert = error ? (
         <Alert
             type="error"
@@ -29,8 +32,8 @@ export function ListingsSkeleton({title, error = false}: ListingsSkeletonProp) {
                 {title}
                 {[...Array(3)].map((_, index) => (
                     <div key={index}>
-                        <Skeleton active paragraph={{rows: 1}}/>
-                        <Divider/>
+                        <Skeleton active paragraph={{ rows: 1 }} />
+                        <Divider />
                     </div>
                 ))}
             </h2>

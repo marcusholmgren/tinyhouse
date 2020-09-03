@@ -8,5 +8,5 @@
 // ====================================================
 
 export interface AuthUrl {
-  authUrl: string;
+    authUrl: string;
 }

@@ -1,8 +1,8 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
-import {Card, Typography} from "antd";
-import {UserOutlined} from "@ant-design/icons";
-import {iconColor, formatListingPrice} from "../../utils";
+import { NavLink } from "react-router-dom";
+import { Card, Typography } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import { iconColor, formatListingPrice } from "../../utils";
 
 interface ListingCardProps {
     listing: {
@@ -15,10 +15,10 @@ interface ListingCardProps {
     };
 }
 
-const {Text, Title} = Typography;
+const { Text, Title } = Typography;
 
-export function ListingCard({listing}: ListingCardProps) {
-    const { id, title, image, address, price, numOfGuests} = listing;
+export function ListingCard({ listing }: ListingCardProps) {
+    const { id, title, image, address, price, numOfGuests } = listing;
 
     return (
         <NavLink to={`/listing/${id}`}>
@@ -26,7 +26,7 @@ export function ListingCard({listing}: ListingCardProps) {
                 hoverable
                 cover={
                     <div
-                        style={{backgroundImage: `url(${image})`}}
+                        style={{ backgroundImage: `url(${image})` }}
                         className="listing-card__cover-img"
                     />
                 }
@@ -45,7 +45,7 @@ export function ListingCard({listing}: ListingCardProps) {
                         </Text>
                     </div>
                     <div className="listing-card__dimensions listing-card__dimensions--guests">
-                        <UserOutlined style={{color: iconColor}} />
+                        <UserOutlined style={{ color: iconColor }} />
                         <Text>{numOfGuests} guests</Text>
                     </div>
                 </div>

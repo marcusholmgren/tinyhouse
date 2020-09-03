@@ -60,7 +60,7 @@ const initialViewer: Viewer = {
 
 function App() {
     const [viewer, setViewer] = useState<Viewer>(initialViewer);
-    const [logIn, {error}] = useMutation<LogInData, LogInVariables>(LOG_IN, {
+    const [logIn, { error }] = useMutation<LogInData, LogInVariables>(LOG_IN, {
         onCompleted: (data) => {
             if (data && data.logIn) {
                 setViewer(data.logIn);
@@ -80,46 +80,46 @@ function App() {
     if (!viewer.didRequest && !error) {
         return (
             <Layout className="app-skeleton">
-                <AppHeaderSkeleton/>
+                <AppHeaderSkeleton />
                 <div className="app-skeleton__spin-section">
-                    <Spin size="large" tip="Launching TinyHouse"/>
+                    <Spin size="large" tip="Launching TinyHouse" />
                 </div>
             </Layout>
         );
     }
 
     const logInErrorBannerElement = error ? (
-        <ErrorBanner description="We weren't able to verify if you were logged in. Please try again later!"/>
+        <ErrorBanner description="We weren't able to verify if you were logged in. Please try again later!" />
     ) : null;
     return (
         <BrowserRouter>
             <Layout id="app">
                 {logInErrorBannerElement}
                 <Affix offsetTop={0} className="app__affix-header">
-                    <AppHeader viewer={viewer} setViewer={setViewer}/>
+                    <AppHeader viewer={viewer} setViewer={setViewer} />
                 </Affix>
                 <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/host" element={<Host/>}/>
-                    <Route path="/listing/:listingId" element={<Listing/>}/>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/host" element={<Host />} />
+                    <Route path="/listing/:listingId" element={<Listing />} />
                     <Route
                         path="/listings"
-                        element={<Listings title="TinyHouse Listings"/>}
+                        element={<Listings title="TinyHouse Listings" />}
                     >
                         <Route
                             path="/:location"
-                            element={<Listings title="TinyHouse Listings"/>}
+                            element={<Listings title="TinyHouse Listings" />}
                         />
                     </Route>
                     <Route
                         path="/login"
-                        element={<Login setViewer={setViewer}/>}
+                        element={<Login setViewer={setViewer} />}
                     />
                     <Route
                         path="/user/:userId"
-                        element={<User viewer={viewer}/>}
+                        element={<User viewer={viewer} />}
                     />
-                    <Route path="*" element={<NotFound/>}/>
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>
         </BrowserRouter>
