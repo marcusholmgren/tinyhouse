@@ -4,7 +4,7 @@
     "private": true,
     "dependencies": {
         "@ant-design/icons": "^4.2.2",
-        "@apollo/client": "^3.2.3",
+        "@apollo/client": "^3.2.4",
         "antd": "^4.7.0",
         "graphql": "^15.3.0",
         "history": "^5.0.0",
