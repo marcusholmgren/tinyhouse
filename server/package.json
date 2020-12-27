@@ -33,7 +33,7 @@
         "@typescript-eslint/eslint-plugin": "^4.8.2",
         "@typescript-eslint/parser": "^4.8.2",
         "dotenv": "^8.2.0",
-        "eslint": "^7.14.0",
+        "eslint": "^7.16.0",
         "nodemon": "^2.0.6",
         "prettier": "^2.2.1",
         "ts-node": "^9.1.1",
