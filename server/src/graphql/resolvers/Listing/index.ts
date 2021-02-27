@@ -1,9 +1,10 @@
 import { IResolvers } from "apollo-server-express";
 import { Request } from "express";
 import { ObjectId } from "mongodb";
-import { Booking, Database, Listing, User } from "../../../lib/types";
+import { Database, Listing, User } from "../../../lib/types";
 import { authorize } from "../../../lib/utils";
 import { ListingArgs, ListingBookingsArgs, ListingBookingsData } from "./types";
+import {calculateSkip} from "../utils";
 
 export const listingResolvers: IResolvers = {
     Query: {
@@ -27,13 +28,13 @@ async function listingQuery(
             _id: new ObjectId(id),
         });
 
-        const viewer = await authorize(db, req);
-        if (viewer && viewer._id === listing?.host) {
-            listing.authorized = true;
-        }
-
         if (!listing) {
             throw new Error("Listing can't be found");
+        }
+
+        const viewer = await authorize(db, req);
+        if (viewer && viewer._id === listing.host) {
+            listing.authorized = true;
         }
 
         return listing;
@@ -66,6 +67,7 @@ function getListingBookingsIndex(listing: Listing): string {
     return JSON.stringify(listing.bookingsIndex);
 }
 
+
 async function getListingBookings(
     listing: Listing,
     { limit, page }: ListingBookingsArgs,
@@ -85,7 +87,7 @@ async function getListingBookings(
             _id: { $in: listing.bookings },
         });
 
-        cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);
+        cursor = cursor.skip(calculateSkip(page, limit));
         cursor = cursor.limit(limit);
 
         data.total = await cursor.count();
