@@ -5,7 +5,7 @@
     "dependencies": {
         "@ant-design/icons": "^4.4.0",
         "@apollo/client": "^3.3.11",
-        "antd": "^4.13.1",
+        "antd": "^4.14.0",
         "graphql": "^15.5.0",
         "history": "^5.0.0",
         "react": "^17.0.1",
