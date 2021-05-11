@@ -31,7 +31,7 @@
         "@types/mongodb": "^3.6.12",
         "@types/node": "^15.0.2",
         "@typescript-eslint/eslint-plugin": "^4.22.0",
-        "@typescript-eslint/parser": "^4.22.0",
+        "@typescript-eslint/parser": "^4.23.0",
         "dotenv": "^8.2.0",
         "eslint": "^7.26.0",
         "nodemon": "^2.0.6",
