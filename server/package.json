@@ -30,7 +30,7 @@
         "@types/lodash.merge": "^4.6.6",
         "@types/mongodb": "^3.6.16",
         "@types/node": "^15.6.1",
-        "@typescript-eslint/eslint-plugin": "^4.24.0",
+        "@typescript-eslint/eslint-plugin": "^4.25.0",
         "@typescript-eslint/parser": "^4.25.0",
         "dotenv": "^10.0.0",
         "eslint": "^7.27.0",
