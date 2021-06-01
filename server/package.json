@@ -19,7 +19,7 @@
         "googleapis": "^74.2.0",
         "graphql": "^15.5.0",
         "lodash.merge": "^4.6.2",
-        "mongodb": "^3.6.8"
+        "mongodb": "^3.6.9"
     },
     "devDependencies": {
         "@types/body-parser": "^1.19.0",
