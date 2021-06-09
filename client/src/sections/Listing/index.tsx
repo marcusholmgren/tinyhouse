@@ -8,7 +8,7 @@ import {
     ListingVariables,
 } from "../../lib/graphql/queries/Listing/__generated__/Listing";
 import { useParams } from "react-router";
-import { ListingDetail, ListingBookings } from "./components";
+import { ListingDetails, ListingBookings } from "./components";
 
 const PAGE_LIMIT = 3;
 const { Content } = Layout;
@@ -48,7 +48,7 @@ export function Listing() {
     const listingBookings = listing ? listing.bookings : null;
 
     const listingDetailsElement = listing ? (
-        <ListingDetail listing={listing} />
+        <ListingDetails listing={listing} />
     ) : null;
 
     const listingBookingsElement = listingBookings ? (

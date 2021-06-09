@@ -47,6 +47,9 @@ Start the server with yarn.
 yarn start
 ```
 
+In development mode you can access the GraphQL Playground on URL [http://localhost:9000/api/](http://localhost:9000/api/)
+
+
 Create a production build with yarn.
 ```cli
 yarn build

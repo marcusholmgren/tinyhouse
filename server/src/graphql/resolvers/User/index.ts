@@ -9,6 +9,7 @@ import {
     UserListingsArgs,
     UserListingsData,
 } from "./types";
+import {calculateSkip} from "../utils";
 
 export const userResolvers: IResolvers = {
     Query: {
@@ -42,7 +43,7 @@ async function getUserListings(
             _id: { $in: user.listings },
         });
 
-        cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);
+        cursor = cursor.skip(calculateSkip(page, limit));
         cursor = cursor.limit(limit);
 
         data.total = await cursor.count();
@@ -73,7 +74,7 @@ async function getUserBookings(
             _id: { $in: user.bookings },
         });
 
-        cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);
+        cursor = cursor.skip(calculateSkip(page, limit));
         cursor = cursor.limit(limit);
 
         data.total = await cursor.count();

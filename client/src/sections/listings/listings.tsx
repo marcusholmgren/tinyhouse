@@ -11,16 +11,14 @@ import "./styles/listings.css";
 
 const LISTINGS = gql`
     query Listings {
-        listings {
+        listing(id: "5d378db94e84753160e08b30") {
             id
             title
             image
             address
             price
             numOfGuests
-            numOfBeds
-            numOfBaths
-            rating
+   
         }
     }
 `;

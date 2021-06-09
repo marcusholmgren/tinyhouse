@@ -11,7 +11,7 @@ interface ListingDetailProps {
 
 const { Paragraph, Title } = Typography;
 
-export function ListingDetail({ listing }: ListingDetailProps) {
+export function ListingDetails({ listing }: ListingDetailProps) {
     const {
         title,
         description,
