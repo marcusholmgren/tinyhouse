@@ -15,7 +15,7 @@
         "react-scripts": "4.0.3"
     },
     "devDependencies": {
-        "@testing-library/jest-dom": "^5.13.0",
+        "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/react": "^11.2.7",
         "@testing-library/user-event": "^13.1.9",
         "@types/graphql": "^14.5.0",
