@@ -1,4 +1,4 @@
-import { IResolvers } from "apollo-server-express";
+import { IResolvers } from "graphql-tools";
 import { Booking, Database, Listing, User } from "../../../lib/types";
 
 export const bookingsResolver: IResolvers = {

@@ -19,6 +19,7 @@ async function mount(app: Application) {
         resolvers,
         context: ({ req, res }) => ({ db, req, res }),
     });
+    await server.start();
     server.applyMiddleware({ app, path: "/api" });
 
     app.listen(port);
