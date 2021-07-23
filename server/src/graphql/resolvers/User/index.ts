@@ -1,4 +1,4 @@
-import { IResolvers } from "apollo-server-express";
+import { IResolvers } from "graphql-tools";
 import { Request } from "express";
 import { Database, User } from "../../../lib/types";
 import { authorize } from "../../../lib/utils";

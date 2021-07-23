@@ -1,4 +1,4 @@
-import { IResolvers } from "apollo-server-express";
+import { IResolvers } from "graphql-tools";
 import { Request } from "express";
 import { ObjectId } from "mongodb";
 import { Database, Listing, User } from "../../../lib/types";
