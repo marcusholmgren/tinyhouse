@@ -68,7 +68,7 @@ async function logInViaGoogle(
                 token: token,
             },
         },
-        { returnOriginal: false }
+        { returnDocument: "after" }
     );
 
     let viewer = updateRes.value;
@@ -85,7 +85,7 @@ async function logInViaGoogle(
             listings: [],
         });
 
-        viewer = inserRes.ops[0];
+        viewer = await db.users.findOne({ _id: inserRes.insertedId});
     }
 
     res.cookie("viewer", userId, {
@@ -105,7 +105,7 @@ async function logInViaCookie(
     const updateReq = await db.users.findOneAndUpdate(
         { _id: req.signedCookies.viewer },
         { $set: { token } },
-        { returnOriginal: false }
+        { returnDocument: "after" }
     );
     const viewer = updateReq.value;
 
