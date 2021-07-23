@@ -4,9 +4,9 @@ import { Database, User } from "../types";
 export async function authorize(
     db: Database,
     req: Request
-): Promise<User | null> {
+): Promise<User | undefined> {
     const token = req.get("X-CSRF-TOKEN");
-    const viewer = await db.users.findOne({
+    const viewer = await db.users.findOne<User>({
         _id: req.signedCookies.viewer,
         token: token,
     });
