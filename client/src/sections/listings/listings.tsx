@@ -18,7 +18,6 @@ const LISTINGS = gql`
             address
             price
             numOfGuests
-   
         }
     }
 `;
@@ -45,10 +44,8 @@ interface Props {
 
 export const Listings = ({ title }: Props) => {
     const { data, loading, error, refetch } = useQuery<ListingsData>(LISTINGS);
-    const [
-        deleteListing,
-        { loading: deleteLoading, error: deleteError },
-    ] = useMutation<DeleteListingsData, DeleteListingVariables>(DELETE_LISTING);
+    const [deleteListing, { loading: deleteLoading, error: deleteError }] =
+        useMutation<DeleteListingsData, DeleteListingVariables>(DELETE_LISTING);
 
     const listings = data?.listings ?? null;
 

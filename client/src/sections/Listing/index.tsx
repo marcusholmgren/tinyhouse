@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { Col, Layout, Row } from "antd";
+import { Moment } from "moment";
 import { ErrorBanner, PageSkeleton } from "../../lib/components";
 import { LISTING } from "../../lib/graphql/queries/Listing";
 import {
@@ -8,13 +9,19 @@ import {
     ListingVariables,
 } from "../../lib/graphql/queries/Listing/__generated__/Listing";
 import { useParams } from "react-router";
-import { ListingDetails, ListingBookings } from "./components";
+import {
+    ListingDetails,
+    ListingCreateBooking,
+    ListingBookings,
+} from "./components";
 
 const PAGE_LIMIT = 3;
 const { Content } = Layout;
 
 export function Listing() {
     const [bookingsPage, setBookingsPage] = useState(1);
+    const [checkInDate, setCheckInDate] = useState<Moment | null>(null);
+    const [checkOutDate, setCheckOutDate] = useState<Moment | null>(null);
     const { listingId } = useParams();
     const { loading, data, error } = useQuery<ListingData, ListingVariables>(
         LISTING,
@@ -60,13 +67,26 @@ export function Listing() {
         />
     ) : null;
 
+    const listingCreateBookingElement = listing ? (
+        <ListingCreateBooking
+            price={listing.price}
+            checkInDate={checkInDate}
+            checkOutDate={checkOutDate}
+            setCheckInDate={setCheckInDate}
+            setCheckOutDate={setCheckOutDate}
+        />
+    ) : null;
+
     return (
         <Content className="listing">
             <Row gutter={24} justify="space-between">
-                <Col xs={24}>{listingDetailsElement}</Col>
-            </Row>
-            <Row gutter={24} justify="space-between">
-                <Col xs={24}>{listingBookingsElement}</Col>
+                <Col xs={24} lg={14}>
+                    {listingDetailsElement}
+                    {listingBookingsElement}
+                </Col>
+                <Col xs={24} lg={10}>
+                    {listingCreateBookingElement}
+                </Col>
             </Row>
         </Content>
     );
