@@ -161,6 +161,13 @@
     camel-case "4.1.2"
     tslib "~2.2.0"
 
+"@graphql-tools/utils@^8.1.0":
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.1.0.tgz#ea64fefa5c3bcb3dec06be765c128c1bf0cc829f"
+  integrity sha512-V5a7xAxZ6DHzrYYticmsLgWim+vGnC6ztbiOXrO5cGtOOk5NSK657SZXsyVOR7hNvdWiHSW0dlBZb6zkkfOnHA==
+  dependencies:
+    tslib "~2.3.0"
+
 "@graphql-typed-document-node/core@^3.0.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.1.0.tgz#0eee6373e11418bfe0b5638f654df7a4ca6a3950"

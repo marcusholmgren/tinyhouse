@@ -1,6 +1,6 @@
 import crypto from "crypto";
 import { Response, Request } from "express";
-import { IResolvers } from "graphql-tools";
+import { IResolvers } from "@graphql-tools/utils";
 import { Database, User, Viewer } from "../../../lib/types";
 import { Google } from "../../../lib/api";
 import { LogInArgs } from "./types";
