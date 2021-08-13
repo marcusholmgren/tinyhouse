@@ -1,4 +1,4 @@
-import { IResolvers } from "graphql-tools";
+import { IResolvers } from "@graphql-tools/utils";
 import { Booking, Database, Listing, User } from "../../../lib/types";
 
 export const bookingsResolver: IResolvers = {
