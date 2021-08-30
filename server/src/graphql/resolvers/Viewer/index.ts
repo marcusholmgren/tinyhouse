@@ -17,7 +17,7 @@ async function logInViaGoogle(
     token: string,
     db: Database,
     res: Response
-): Promise<User | undefined> {
+): Promise<User | null> {
     const { user } = await Google.logIn(code);
 
     if (!user) {
@@ -101,7 +101,7 @@ async function logInViaCookie(
     db: Database,
     req: Request,
     res: Response
-): Promise<User | undefined> {
+): Promise<User | null> {
     const updateReq = await db.users.findOneAndUpdate(
         { _id: req.signedCookies.viewer },
         { $set: { token } },
@@ -160,7 +160,7 @@ async function logInMutation(
         const code = login ? login.code : null;
         const token = crypto.randomBytes(16).toString("hex");
 
-        const viewer: User | undefined = code
+        const viewer: User | null = code
             ? await logInViaGoogle(code, token, db, res)
             : await logInViaCookie(token, db, req, res);
 
