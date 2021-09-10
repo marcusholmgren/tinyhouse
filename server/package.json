@@ -18,7 +18,7 @@
         "cookie-parser": "^1.4.5",
         "express": "^4.17.1",
         "googleapis": "^85.0.0",
-        "graphql": "^15.5.1",
+        "graphql": "^15.5.3",
         "graphql-tools": "^8.2.0",
         "lodash.merge": "^4.6.2",
         "moment": "^2.29.1",
