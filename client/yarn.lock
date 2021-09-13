@@ -9679,10 +9679,15 @@ react-router-dom@6.0.0-beta.3:
   dependencies:
     react-router "6.0.0-beta.3"
 
-react-router@6.0.0-beta.3, react-router@^6.0.0-beta.3:
+react-router@6.0.0-beta.3:
   version "6.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.0.0-beta.3.tgz#d1276202eee8a0269c6d24fc9be72d5448cc63ae"
   integrity sha512-5fSBKgb0VaUrMi1RJxeZZMyGkjGSd9HtoWtc2XIcBFc01l7y6jBg5mVkmifjhhdSlamE3y6E6RXpfzCWqEBPPA==
+
+react-router@^6.0.0-beta.4:
+  version "6.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.0.0-beta.4.tgz#e35a440b36fd07a2ac854e1f1f176b56a777793a"
+  integrity sha512-48JRRZJOwmfOKM12Tv3WjmNkVb2NpSEgDTWC4+MEJaud0+eyLJxqy62CKzOydMlk7hrfRFpC/elUYSZAuyx3qA==
 
 react-scripts@4.0.3:
   version "4.0.3"
