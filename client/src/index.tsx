@@ -107,7 +107,7 @@ function App() {
                         element={<Listings title="TinyHouse Listings" />}
                     >
                         <Route
-                            path="/:location"
+                            path="/listings/:location"
                             element={<Listings title="TinyHouse Listings" />}
                         />
                     </Route>
