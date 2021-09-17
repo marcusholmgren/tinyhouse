@@ -24,7 +24,7 @@ export function User({ viewer }: UserProps) {
     const { userId } = useParams();
     const { data, loading, error } = useQuery<UserData, UserVariables>(USER, {
         variables: {
-            id: userId,
+            id: userId ?? '',
             bookingsPage: bookingsPage,
             listingsPage: listingsPage,
             limit: PAGE_LIMIT,

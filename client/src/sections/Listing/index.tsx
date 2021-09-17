@@ -27,7 +27,7 @@ export function Listing() {
         LISTING,
         {
             variables: {
-                id: listingId,
+                id: listingId ?? '',
                 bookingsPage: bookingsPage,
                 limit: PAGE_LIMIT,
             },
