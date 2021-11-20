@@ -3,12 +3,20 @@ import { Request } from "express";
 import { ObjectId } from "mongodb";
 import { Database, Listing, User } from "../../../lib/types";
 import { authorize } from "../../../lib/utils";
-import { ListingArgs, ListingBookingsArgs, ListingBookingsData } from "./types";
-import {calculateSkip} from "../utils";
+import {
+    ListingArgs,
+    ListingBookingsArgs,
+    ListingBookingsData,
+    ListingsArgs,
+    ListingsData,
+    ListingsFilter,
+} from "./types";
+import { calculateSkip } from "../utils";
 
 export const listingResolvers: IResolvers = {
     Query: {
         listing: listingQuery,
+        listings: listingsQuery,
     },
     Listing: {
         id: getListingId,
@@ -43,6 +51,37 @@ async function listingQuery(
     }
 }
 
+async function listingsQuery(
+    _root: undefined,
+    { filter, limit, page }: ListingsArgs,
+    { db }: { db: Database }
+): Promise<ListingsData> {
+    try {
+        let cursor = await db.listings.find({});
+        if (filter && filter === ListingsFilter.PRICE_LOW_TO_HIGH) {
+            cursor = cursor.sort({
+                price: 1,
+            });
+        }
+        if (filter && filter === ListingsFilter.PRICE_HIGH_TO_LOW) {
+            cursor = cursor.sort({
+                price: -1,
+            });
+        }
+
+        cursor = cursor.limit(limit).skip(calculateSkip(page, limit));
+        const listings = await cursor.toArray();
+        const count = await cursor.count();
+
+        return {
+            total: count,
+            result: listings,
+        };
+    } catch (error) {
+        throw new Error(`Failed to query listings: ${error}`);
+    }
+}
+
 function getListingId(listing: Listing): string {
     return listing._id.toString();
 }
@@ -66,7 +105,6 @@ async function getListingHost(
 function getListingBookingsIndex(listing: Listing): string {
     return JSON.stringify(listing.bookingsIndex);
 }
-
 
 async function getListingBookings(
     listing: Listing,
