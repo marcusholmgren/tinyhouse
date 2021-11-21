@@ -9,7 +9,7 @@ import {
     UserListingsArgs,
     UserListingsData,
 } from "./types";
-import {calculateSkip} from "../utils";
+import { calculateSkip } from "../utils";
 
 export const userResolvers: IResolvers = {
     Query: {

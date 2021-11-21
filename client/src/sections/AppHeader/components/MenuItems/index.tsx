@@ -40,7 +40,7 @@ export function MenuItems({ viewer, setViewer }: MenuItemsProps) {
 
     const subMenuLogin =
         viewer.id && viewer.avatar ? (
-            <SubMenu title={<Avatar src={viewer.avatar} />}>
+            <SubMenu key={viewer.id} title={<Avatar src={viewer.avatar} />}>
                 <Item key="/user">
                     <NavLink to={`/user/${viewer.id}`}>
                         <UserOutlined></UserOutlined>

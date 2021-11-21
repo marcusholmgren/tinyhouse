@@ -85,7 +85,7 @@ async function logInViaGoogle(
             listings: [],
         });
 
-        viewer = await db.users.findOne({ _id: inserRes.insertedId});
+        viewer = await db.users.findOne({ _id: inserRes.insertedId });
     }
 
     res.cookie("viewer", userId, {
