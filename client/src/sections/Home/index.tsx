@@ -1,17 +1,37 @@
 import React from "react";
 import { Col, Row, Layout, Typography } from "antd";
+import { useQuery } from "@apollo/client";
 import { Link, useNavigate } from "react-router-dom";
-import { HomeHero } from "./components";
-import { displayErrorMessage } from "../../lib/utils";
+import { HomeHero, HomeListings, HomeListingsSkeleton } from "./components";
+import {
+    Listings as ListingsData,
+    ListingsVariables,
+} from "../../lib/graphql/queries/Listings/__generated__/Listings";
+import { ListingsFilter } from "../../lib/graphql/globalTypes";
+import { LISTINGS } from "../../lib/graphql/queries";
 
-import mapBackground from "./assets/map-background.jpg.png";
+import { displayErrorMessage } from "../../lib/utils";
+import mapBackground from "./assets/map-background.jpg";
 import sanFranciscoImage from "./assets/san-fransisco.jpg";
 import cancunImage from "./assets/cancun.jpg";
 
 const { Content } = Layout;
 const { Paragraph, Title } = Typography;
 
+const PAGE_LIMIT = 4;
+const PAGE_NUMBER = 1;
+
 export function Home() {
+    const { loading, data } = useQuery<ListingsData, ListingsVariables>(
+        LISTINGS,
+        {
+            variables: {
+                filter: ListingsFilter.PRICE_HIGH_TO_LOW,
+                limit: PAGE_LIMIT,
+                page: PAGE_NUMBER,
+            },
+        }
+    );
     const navigate = useNavigate();
 
     function onSearch(value: string) {
@@ -21,6 +41,23 @@ export function Home() {
         } else {
             displayErrorMessage("Please enter a valid search term");
         }
+    }
+
+    function renderListingsSection() {
+        if (loading) {
+            return <HomeListingsSkeleton />;
+        }
+
+        if (data) {
+            return (
+                <HomeListings
+                    title="Premium Listings"
+                    listings={data.listings.result}
+                />
+            );
+        }
+
+        return null;
     }
 
     return (
@@ -45,6 +82,8 @@ export function Home() {
                     Popular listings in the United States
                 </Link>
             </div>
+
+            {renderListingsSection()}
 
             <div className="home__listings">
                 <Title level={4} className="home__listings-title">
