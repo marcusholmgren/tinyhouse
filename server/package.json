@@ -16,7 +16,7 @@
         "apollo-server-express": "^3.5.0",
         "body-parser": "^1.19.1",
         "cookie-parser": "^1.4.6",
-        "express": "^4.17.1",
+        "express": "^4.17.2",
         "googleapis": "^92.0.0",
         "graphql": "^16.2.0",
         "graphql-tools": "^8.2.0",
