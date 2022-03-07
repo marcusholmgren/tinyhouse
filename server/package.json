@@ -33,7 +33,7 @@
         "@types/lodash.merge": "^4.6.6",
         "@types/mongodb": "^4.0.7",
         "@types/node": "^17.0.21",
-        "@types/ws": "^8.5.1",
+        "@types/ws": "^8.5.2",
         "@typescript-eslint/eslint-plugin": "^5.13.0",
         "@typescript-eslint/parser": "^5.13.0",
         "dotenv": "^16.0.0",
