@@ -116,13 +116,16 @@ export const Listings = ({ title }: Props) => {
         />
     ) : null;
 
-    return (
-        <div className="listings">
-            <Spin spinning={deleteLoading || loading}>
+    const deleteListingEl =
+        deleteLoading || loading ? (
+            <Spin className="listings__loading" tip="Deleting listing..." />
+        ) : (
+            <>
                 {deleteListingErrorAlert}
                 <h2>{title}</h2>
                 <ul>{listingsList}</ul>
-            </Spin>
-        </div>
-    );
+            </>
+        );
+
+    return <div className="listings">{deleteListingEl}</div>;
 };
