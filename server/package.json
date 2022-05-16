@@ -12,7 +12,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@graphql-tools/utils": "^8.6.9",
+        "@graphql-tools/utils": "^8.6.10",
         "apollo-server-express": "^3.7.0",
         "body-parser": "^1.20.0",
         "cookie-parser": "^1.4.6",
