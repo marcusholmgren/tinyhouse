@@ -22,7 +22,7 @@
         "graphql-tools": "^8.3.3",
         "lodash.merge": "^4.6.2",
         "moment": "^2.29.4",
-        "mongodb": "^4.8.1"
+        "mongodb": "^4.9.0"
     },
     "devDependencies": {
         "@types/body-parser": "^1.19.2",
