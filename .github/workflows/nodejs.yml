@@ -8,55 +8,61 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-    types: [ opened, reopened, synchronize, edited, closed ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   server-build:
-
     runs-on: ubuntu-latest
-    env:
-      working-dir: ./server 
-
+    defaults:
+      run:
+        working-directory: ./server
     strategy:
       matrix:
-        node-version: [17.x]
-
+        node-version: [22.x]
     steps:
-    - uses: actions/checkout@v2
-    - name: Server use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install dependencies
-      run: yarn
-      working-directory: ${{ env.working-dir }}
-    - run: yarn build
-      working-directory: ${{ env.working-dir }}
-#    - run: npm test --if-present
-#      working-directory: ${{ env.working-dir }}
-      env:
-        CI: true
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: server/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Prettier Check
+        run: npx prettier --check .
+      - name: Build
+        run: npm run build
+        env:
+          CI: true
 
   client-build:
-
     runs-on: ubuntu-latest
-    env:
-      working-dir: ./client
-
+    defaults:
+      run:
+        working-directory: ./client
     strategy:
       matrix:
-        node-version: [17.x]
-
+        node-version: [22.x]
     steps:
-    - uses: actions/checkout@v2
-    - name: Client use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install dependencies
-      run: yarn
-      working-directory: ${{ env.working-dir }}
-    - run: yarn build
-      working-directory: ${{ env.working-dir }}
-      env:
-        CI: true
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: client/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Prettier Check
+        run: npx prettier --check .
+      - name: Build
+        run: npm run build
+        env:
+          CI: true
