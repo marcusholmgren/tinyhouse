@@ -28,7 +28,7 @@
         "@types/body-parser": "^1.19.2",
         "@types/cookie-parser": "^1.4.3",
         "@types/dotenv": "^8.2.0",
-        "@types/express": "4.17.15",
+        "@types/express": "4.17.16",
         "@types/graphql": "^14.5.0",
         "@types/lodash.merge": "^4.6.7",
         "@types/mongodb": "^4.0.7",
