@@ -34,7 +34,7 @@
         "@types/mongodb": "^4.0.7",
         "@types/node": "^20.2.5",
         "@types/ws": "^8.5.4",
-        "@typescript-eslint/eslint-plugin": "^5.59.7",
+        "@typescript-eslint/eslint-plugin": "^5.59.8",
         "@typescript-eslint/parser": "^5.59.7",
         "dotenv": "^16.0.3",
         "eslint": "^8.41.0",
