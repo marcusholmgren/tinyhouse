@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
     ApolloClient,
@@ -126,13 +126,13 @@ function App() {
     );
 }
 
-render(
+const root = createRoot(document.getElementById("root")!);
+root.render(
     <>
         <ApolloProvider client={client}>
             <App />
         </ApolloProvider>
-    </>,
-    document.getElementById("root")
+    </>
 );
 
 // If you want your app to work offline and load faster, you can change

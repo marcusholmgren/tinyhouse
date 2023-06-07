@@ -11,8 +11,7 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-router": "^6.11.1",
-        "react-router-dom": "6.11.2",
-        "react-scripts": "5.0.1"
+        "react-router-dom": "6.11.2"
     },
     "devDependencies": {
         "@testing-library/jest-dom": "^5.16.5",
@@ -23,15 +22,15 @@
         "@types/node": "^20.2.5",
         "@types/react": "^18.2.7",
         "@types/react-dom": "^18.2.4",
-        "apollo": "^2.34.0",
+        "@vitejs/plugin-react": "^4.0.0",
         "prettier": "^2.8.8",
-        "typescript": "~5.0.4"
+        "typescript": "~5.0.4",
+        "vite": "^4.3.9"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
+        "start": "vite",
+        "build": "vite build",
+        "serve": "vite preview",
         "codegen:schema2": "apollo-codegen introspect-schema http://localhost:9000/api --output schema.json",
         "codegen:generate2": "apollo-codegen generate src/**/*.ts --schema schema.json --target typescript --output ./src/lib/graphql/globalTypes.ts",
         "codegen:schema": "npx apollo client:download-schema --endpoint=http://localhost:9000/api",
