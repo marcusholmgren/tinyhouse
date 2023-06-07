@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import { Button, Card, DatePicker, Divider, Typography } from "antd";
 import moment, { Moment } from "moment";
@@ -94,4 +95,9 @@ export function ListingCreateBooking({
             </Card>
         </div>
     );
+}
+*/
+
+export function ListingCreateBooking() {
+    return <h2>TODO</h2>;
 }
