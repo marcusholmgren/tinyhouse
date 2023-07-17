@@ -20,7 +20,7 @@
         "@types/graphql": "^14.5.0",
         "@types/jest": "^29.5.1",
         "@types/node": "^20.4.1",
-        "@types/react": "^18.2.14",
+        "@types/react": "^18.2.15",
         "@types/react-dom": "^18.2.6",
         "@vitejs/plugin-react": "^4.0.3",
         "prettier": "^3.0.0",
