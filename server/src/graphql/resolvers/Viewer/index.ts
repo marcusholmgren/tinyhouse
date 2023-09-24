@@ -71,7 +71,7 @@ async function logInViaGoogle(
         { returnDocument: "after" }
     );
 
-    let viewer = updateRes.value;
+    let viewer = updateRes;
 
     if (!viewer) {
         const inserRes = await db.users.insertOne({
@@ -107,7 +107,7 @@ async function logInViaCookie(
         { $set: { token } },
         { returnDocument: "after" }
     );
-    const viewer = updateReq.value;
+    const viewer = updateReq;
 
     if (!viewer) {
         res.clearCookie("viewer", cookieOptions);
