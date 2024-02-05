@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "@ant-design/icons": "^5.2.6",
+        "@ant-design/icons": "^5.3.0",
         "@apollo/client": "^3.8.10",
         "antd": "^5.13.3",
         "graphql": "^16.8.1",
