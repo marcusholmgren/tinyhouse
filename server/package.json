@@ -36,7 +36,7 @@
         "@types/ws": "^8.5.10",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
-        "dotenv": "^16.4.2",
+        "dotenv": "^16.4.4",
         "eslint": "^8.56.0",
         "nodemon": "^3.0.3",
         "prettier": "^3.2.5",
