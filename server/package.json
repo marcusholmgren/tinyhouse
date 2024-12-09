@@ -39,7 +39,7 @@
         "dotenv": "^16.4.7",
         "eslint": "^8.57.1",
         "nodemon": "^3.1.7",
-        "prettier": "^3.4.1",
+        "prettier": "^3.4.2",
         "ts-node": "^10.9.2",
         "typescript": "^5.7.2"
     },
