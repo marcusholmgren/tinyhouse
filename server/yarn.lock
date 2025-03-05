@@ -243,16 +243,6 @@
   dependencies:
     tslib "^2.4.0"
 
-"@graphql-tools/utils@^10.8.2":
-  version "10.8.2"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-10.8.2.tgz#8f1238f2efba0861ce192220c7258beeeb927172"
-  integrity sha512-JjWpf9Dj2LXFccAB7CON6jUcXduJlE5XcJfLmKTWBk46Ei2dhDntVAmvIa97YPdLanrgFN5SRt3hSAe3qo/FYg==
-  dependencies:
-    "@graphql-typed-document-node/core" "^3.1.1"
-    cross-inspect "1.0.1"
-    dset "^3.1.4"
-    tslib "^2.4.0"
-
 "@graphql-tools/utils@^10.8.3":
   version "10.8.3"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-10.8.3.tgz#bbe80a7bee4255e5188d6dee6e23c5f4399c571c"
