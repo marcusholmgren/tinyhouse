@@ -6,3 +6,4 @@ export { Listings } from "./Listings";
 export { Login } from "./Login";
 export { NotFound } from "./NotFound";
 export { User } from "./User";
+export { Settings } from "./Settings";

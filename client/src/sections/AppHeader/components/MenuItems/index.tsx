@@ -47,6 +47,12 @@ export function MenuItems({ viewer, setViewer }: MenuItemsProps) {
                         Profile
                     </NavLink>
                 </Item>
+                <Item key="/settings">
+                    <NavLink to="/settings">
+                        {/* Add an appropriate icon later */}
+                        Settings
+                    </NavLink>
+                </Item>
                 <Item key="/logout" onClick={handleLogout}>
                     <LogoutOutlined></LogoutOutlined>
                     Log out

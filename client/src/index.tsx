@@ -20,6 +20,7 @@ import {
     Login,
     NotFound,
     User,
+    Settings,
 } from "./sections";
 import { LOG_IN } from "./lib/graphql/mutations/LogIn";
 import {
@@ -119,6 +120,7 @@ function App() {
                         path="/user/:userId"
                         element={<User viewer={viewer} />}
                     />
+                    <Route path="/settings" element={<Settings />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>
