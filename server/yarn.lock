@@ -1628,10 +1628,10 @@ googleapis-common@^8.0.0:
     qs "^6.7.0"
     url-template "^2.0.8"
 
-googleapis@^154.0.0:
-  version "154.0.0"
-  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-154.0.0.tgz#b03a056ceaa939cd9f70b4cedae9057cb20c7685"
-  integrity sha512-P5N9366ORj7O3vPPdZRH0Bw+CEa177XUxq0lOw4w/2o8CViyp24Vc6SdQYMwijEq1WmFgmlf4jDOQMzhnDgBNQ==
+googleapis@^154.1.0:
+  version "154.1.0"
+  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-154.1.0.tgz#2d44401ab6ebd8239ba74c9548c3b396da9e7eff"
+  integrity sha512-lsgKftflkjR+PNdKDjy5e4zZUQO3BMaNLO0Q91uvr9YCy3aOqtEwkDtfhcBguFtFLsqj+XjdfDu2on6rtHNvYg==
   dependencies:
     google-auth-library "^10.1.0"
     googleapis-common "^8.0.0"
