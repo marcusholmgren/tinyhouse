@@ -1599,10 +1599,10 @@ globby@^11.1.0:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
-google-auth-library@^10.1.0:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/google-auth-library/-/google-auth-library-10.1.0.tgz#5412fa2b7f2c4fe169c6cc56b9425319137e17e9"
-  integrity sha512-GspVjZj1RbyRWpQ9FbAXMKjFGzZwDKnUHi66JJ+tcjcu5/xYAP1pdlWotCuIkMwjfVsxxDvsGZXGLzRt72D0sQ==
+google-auth-library@^10.1.0, google-auth-library@^10.2.0:
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/google-auth-library/-/google-auth-library-10.2.1.tgz#9d2513dd92d797cd058a1696011b0cd4f0213b50"
+  integrity sha512-HMxFl2NfeHYnaL1HoRIN1XgorKS+6CDaM+z9LSSN+i/nKDDL4KFFEWogMXu7jV4HZQy2MsxpY+wA5XIf3w410A==
   dependencies:
     base64-js "^1.3.0"
     ecdsa-sig-formatter "^1.0.11"
@@ -1628,12 +1628,12 @@ googleapis-common@^8.0.0:
     qs "^6.7.0"
     url-template "^2.0.8"
 
-googleapis@^154.1.0:
-  version "154.1.0"
-  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-154.1.0.tgz#2d44401ab6ebd8239ba74c9548c3b396da9e7eff"
-  integrity sha512-lsgKftflkjR+PNdKDjy5e4zZUQO3BMaNLO0Q91uvr9YCy3aOqtEwkDtfhcBguFtFLsqj+XjdfDu2on6rtHNvYg==
+googleapis@^155.0.1:
+  version "155.0.1"
+  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-155.0.1.tgz#53ff7dfcbbbb2cc6be8db26dce726aadb3895e84"
+  integrity sha512-8FRHMufEkXqoLeqxF6CTezxIupvHuAGWHfBz3KzRgBrha6R8nf1ed1TPmk3/N8GYkCxueRmUziLPiqpshBlSxQ==
   dependencies:
-    google-auth-library "^10.1.0"
+    google-auth-library "^10.2.0"
     googleapis-common "^8.0.0"
 
 gopd@^1.2.0:
