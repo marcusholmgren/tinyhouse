@@ -7,6 +7,7 @@
         "build": "tsc -p ./",
         "seed": "ts-node temp/seed.ts",
         "clear": "ts-node temp/clear.ts",
+        "lint": "eslint . --ext .ts",
         "prettier": "prettier --write ."
     },
     "author": "",
