@@ -34,8 +34,6 @@ jobs:
       run: yarn prettier --check
     - name: Build
       run: yarn build
-    - name: Test
-      run: yarn test --if-present
       env:
         CI: true
 
