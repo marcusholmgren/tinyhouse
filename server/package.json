@@ -15,7 +15,7 @@
     "dependencies": {
         "@graphql-tools/utils": "^10.10.3",
         "apollo-server-express": "^3.13.0",
-        "body-parser": "^2.2.0",
+        "body-parser": "^2.2.1",
         "cookie-parser": "^1.4.7",
         "express": "^4.21.2",
         "googleapis": "^166.0.0",
