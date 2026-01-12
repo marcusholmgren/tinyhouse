@@ -242,6 +242,16 @@
     cross-inspect "1.0.1"
     tslib "^2.4.0"
 
+"@graphql-tools/utils@^11.0.0":
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-11.0.0.tgz#f54a09372e96c32416fcbd0eb8e9e0f1338900bd"
+  integrity sha512-bM1HeZdXA2C3LSIeLOnH/bcqSgbQgKEDrjxODjqi3y58xai2TkNrtYcQSoWzGbt9VMN1dORGjR7Vem8SPnUFQA==
+  dependencies:
+    "@graphql-typed-document-node/core" "^3.1.1"
+    "@whatwg-node/promise-helpers" "^1.0.0"
+    cross-inspect "1.0.1"
+    tslib "^2.4.0"
+
 "@graphql-tools/utils@^9.2.1":
   version "9.2.1"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-9.2.1.tgz#1b3df0ef166cfa3eae706e3518b17d5922721c57"
