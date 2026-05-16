@@ -63,7 +63,7 @@ export function Login({ setViewer }: LoginProps) {
             }
         } catch {
             displayErrorMessage(
-                "Sorry! We weren't able to log you in. Please try again later!"
+                "Sorry! We weren't able to log you in. Please try again later!",
             );
         }
     };

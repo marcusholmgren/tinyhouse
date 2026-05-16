@@ -29,7 +29,7 @@ export const listingResolvers: IResolvers = {
 async function listingQuery(
     _root: undefined,
     { id }: ListingArgs,
-    { db, req }: { db: Database; req: Request }
+    { db, req }: { db: Database; req: Request },
 ): Promise<Listing | null> {
     try {
         const listing = await db.listings.findOne({
@@ -54,7 +54,7 @@ async function listingQuery(
 async function listingsQuery(
     _root: undefined,
     { filter, limit, page }: ListingsArgs,
-    { db }: { db: Database }
+    { db }: { db: Database },
 ): Promise<ListingsData> {
     try {
         let cursor = await db.listings.find({});
@@ -89,7 +89,7 @@ function getListingId(listing: Listing): string {
 async function getListingHost(
     listing: Listing,
     _args: undefined,
-    { db }: { db: Database }
+    { db }: { db: Database },
 ): Promise<User> {
     const host = await db.users.findOne({
         _id: listing.host,
@@ -109,7 +109,7 @@ function getListingBookingsIndex(listing: Listing): string {
 async function getListingBookings(
     listing: Listing,
     { limit, page }: ListingBookingsArgs,
-    { db }: { db: Database }
+    { db }: { db: Database },
 ): Promise<ListingBookingsData | null> {
     try {
         if (!listing.authorized) {

@@ -500,7 +500,9 @@
     margin: 40px auto;
     border-radius: 2px;
     background-color: #4285f4;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 0 1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow:
+        0 1px 1px 0 rgba(0, 0, 0, 0.24),
+        0 0 1px 0 rgba(0, 0, 0, 0.12);
     border: none;
     display: flex;
     align-items: center;
@@ -509,7 +511,9 @@
     cursor: pointer;
 }
 .log-in-card__google-button:hover {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+    box-shadow:
+        0 2px 2px 0 rgba(0, 0, 0, 0.24),
+        0 0 2px 0 rgba(0, 0, 0, 0.12);
 }
 .log-in-card__google-button:active {
     background: #3367d6;

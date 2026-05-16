@@ -4,7 +4,7 @@ export const iconColor = "#1890ff";
 
 export function formatListingPrice(
     price: number,
-    round: boolean = true
+    round: boolean = true,
 ): string {
     const formattedListingPrice = round ? Math.round(price / 100) : price / 100;
     return `$${formattedListingPrice}`;
@@ -12,7 +12,7 @@ export function formatListingPrice(
 
 export function displaySuccessNotification(
     message: string,
-    description?: string
+    description?: string,
 ) {
     return notification["success"]({
         message,

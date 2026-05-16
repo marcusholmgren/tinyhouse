@@ -27,7 +27,7 @@ export const userResolvers: IResolvers = {
 async function getUserListings(
     user: User,
     { limit, page }: UserListingsArgs,
-    { db }: { db: Database }
+    { db }: { db: Database },
 ): Promise<UserListingsData> {
     try {
         const data: UserListingsData = {
@@ -58,7 +58,7 @@ async function getUserListings(
 async function getUserBookings(
     user: User,
     { limit, page }: UserBookingsArgs,
-    { db }: { db: Database }
+    { db }: { db: Database },
 ): Promise<UserBookingsData | null> {
     try {
         if (!user.authorized) {
@@ -101,7 +101,7 @@ function getUserId(user: User): string {
 async function userQuery(
     _root: undefined,
     { id }: UserArgs,
-    { db, req }: { db: Database; req: Request }
+    { db, req }: { db: Database; req: Request },
 ): Promise<User> {
     try {
         const user = await db.users.findOne({
