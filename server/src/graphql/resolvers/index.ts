@@ -8,5 +8,5 @@ export const resolvers = merge(
     bookingsResolver,
     listingResolvers,
     viewResolvers,
-    userResolvers
+    userResolvers,
 );

@@ -31,7 +31,7 @@ export function Listing() {
                 bookingsPage: bookingsPage,
                 limit: PAGE_LIMIT,
             },
-        }
+        },
     );
 
     if (loading) {

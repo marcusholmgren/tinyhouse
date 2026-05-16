@@ -16,7 +16,7 @@ async function logInViaGoogle(
     code: string,
     token: string,
     db: Database,
-    res: Response
+    res: Response,
 ): Promise<User | null> {
     const { user } = await Google.logIn(code);
 
@@ -68,7 +68,7 @@ async function logInViaGoogle(
                 token: token,
             },
         },
-        { returnDocument: "after" }
+        { returnDocument: "after" },
     );
 
     let viewer = updateRes;
@@ -100,12 +100,12 @@ async function logInViaCookie(
     token: string,
     db: Database,
     req: Request,
-    res: Response
+    res: Response,
 ): Promise<User | null> {
     const updateReq = await db.users.findOneAndUpdate(
         { _id: req.signedCookies.viewer },
         { $set: { token } },
-        { returnDocument: "after" }
+        { returnDocument: "after" },
     );
     const viewer = updateReq;
 
@@ -141,7 +141,7 @@ function getViewerId(viewer: Viewer): string | undefined {
 function logOutMutation(
     _root: undefined,
     _args: unknown,
-    { res }: { res: Response }
+    { res }: { res: Response },
 ): Viewer {
     try {
         res.clearCookie("viewer", cookieOptions);
@@ -154,7 +154,7 @@ function logOutMutation(
 async function logInMutation(
     _root: undefined,
     { login }: LogInArgs,
-    { db, req, res }: { db: Database; req: Request; res: Response }
+    { db, req, res }: { db: Database; req: Request; res: Response },
 ): Promise<Viewer> {
     try {
         const code = login ? login.code : null;

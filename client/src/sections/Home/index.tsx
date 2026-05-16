@@ -30,7 +30,7 @@ export function Home() {
                 limit: PAGE_LIMIT,
                 page: PAGE_NUMBER,
             },
-        }
+        },
     );
     const navigate = useNavigate();
 

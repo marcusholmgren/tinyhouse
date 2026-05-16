@@ -16,7 +16,7 @@ function getBookingId(booking: Booking): string {
 async function getBookingListing(
     booking: Booking,
     _args: unknown,
-    { db }: { db: Database }
+    { db }: { db: Database },
 ): Promise<Listing | null> {
     return await db.listings.findOne({ _id: booking.listing });
 }
@@ -24,7 +24,7 @@ async function getBookingListing(
 async function getBookingTenant(
     booking: Booking,
     _args: unknown,
-    { db }: { db: Database }
+    { db }: { db: Database },
 ): Promise<User | null> {
     return await db.users.findOne({ _id: booking.tenant });
 }

@@ -29,7 +29,7 @@ export function MenuItems({ viewer, setViewer }: MenuItemsProps) {
         },
         onError: (error) => {
             displayErrorMessage(
-                "Sorry, we weren't able to to log you out. Please try again later!"
+                "Sorry, we weren't able to to log you out. Please try again later!",
             );
         },
     });
